@@ -2,13 +2,13 @@ package service
 
 import "net/http"
 
-type KVService struct {
-	client  http.Client
+type ClientComponent struct {
+	client  *http.Client
 	address string
 }
 
-func NewKVService(client http.Client, address string) *KVService {
-	return &KVService{
+func NewKVService(client *http.Client, address string) *ClientComponent {
+	return &ClientComponent{
 		client:  client,
 		address: address,
 	}

@@ -8,7 +8,7 @@ import (
 	"net/http"
 )
 
-func (k *KVService) getAddress(path string) string {
+func (k *ClientComponent) getAddress(path string) string {
 	return fmt.Sprintf("http://%s%s", k.address, path)
 }
 
@@ -18,7 +18,7 @@ func answerFromString[T any](raw []byte) (T, error) {
 	return ans, err
 }
 
-func (k *KVService) processOnlyQueryRequest(method string, path string, args map[string]string) ([]byte, error) {
+func (k *ClientComponent) processOnlyQueryRequest(method string, path string, args map[string]string) ([]byte, error) {
 	req, err := http.NewRequest(
 		method, k.getAddress(path), nil,
 	)
